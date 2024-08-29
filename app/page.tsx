@@ -3,6 +3,7 @@ import { FeaturesSectionDemo } from "@/components/Feature2";
 import { Features } from "@/components/Features";
 import Hero from "@/components/Hero";
 import GridPattern from "@/components/magicui/grid-pattern";
+import { TabComponent } from "@/components/TabComponent";
 import { MarqueeDemoVertical } from "@/components/Testimonials";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,7 @@ export default function Home() {
       <Clients />
       <Features />
       <FeaturesSectionDemo />
+      <TabComponent />
       <MarqueeDemoVertical />
     </main>
   );

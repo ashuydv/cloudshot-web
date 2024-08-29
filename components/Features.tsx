@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import createGlobe from "cobe";
@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
+import BadgeSlider from "./BadgeSlider";
 
 export function Features() {
     const features = [
@@ -30,9 +31,9 @@ export function Features() {
             title: "Watch our AI on YouTube",
             description:
                 "Whether its you or Tyler Durden, you can get to know about our product on YouTube",
-            skeleton: <SkeletonThree />,
+            skeleton: "",
             className:
-                "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
+                "col-span-1 lg:col-span-3 lg:border-r dark:border-neutral-800",
         },
         {
             title: "Deploy in seconds",
@@ -108,16 +109,16 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 
 export const SkeletonOne = () => {
     return (
-        <div className="relative flex py-8 px-2 gap-10 h-full">
-            <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
-                <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
+        <div className="relative flex py-8 gap-10 h-full">
+            <div className="w-full mx-auto group h-full">
+                <div className="flex flex-1 w-full h-80 flex-col space-y-2">
                     {/* TODO */}
                     <Image
                         src="https://ai-saas-template-aceternity.vercel.app/_next/image?url=%2Ftyler.jpeg&w=828&q=75"
                         alt="header"
-                        width={500}
-                        height={500}
-                        className="h-full w-full aspect-square object-cover object-left-top rounded-sm"
+                        width={250}
+                        height={150}
+                        className="w-full object-center rounded-sm"
                     />
                 </div>
             </div>
@@ -173,6 +174,11 @@ export const SkeletonTwo = () => {
             zIndex: 100,
         },
     };
+
+    const rotations = useMemo(() =>
+        Array(images.length * 2).fill(0).map(() => Math.floor(Math.random() * 20 - 10)),
+        []);
+
     return (
         <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
             {/* TODO */}
@@ -182,7 +188,7 @@ export const SkeletonTwo = () => {
                         variants={imageVariants}
                         key={"images-first" + idx}
                         style={{
-                            rotate: Math.random() * 20 - 10,
+                            rotate: rotations[idx],
                         }}
                         whileHover="whileHover"
                         whileTap="whileTap"
@@ -203,7 +209,7 @@ export const SkeletonTwo = () => {
                     <motion.div
                         key={"images-second" + idx}
                         style={{
-                            rotate: Math.random() * 20 - 10,
+                            rotate: rotations[idx],
                         }}
                         variants={imageVariants}
                         whileHover="whileHover"
@@ -230,7 +236,8 @@ export const SkeletonTwo = () => {
 export const SkeletonFour = () => {
     return (
         <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
-            <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" />
+            <Globe className="absolute -right-2 md:-right-40 -bottom-80" />
+            <BadgeSlider />
         </div>
     );
 };
