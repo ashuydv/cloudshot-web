@@ -4,7 +4,7 @@ import { Badge } from './ui/badge';
 
 interface CloudService {
   name: string;
-  icon: string; // SVG string
+  icon: string;
 }
 
 const awsServices: CloudService[] = [
@@ -52,10 +52,7 @@ const awsServices: CloudService[] = [
   {
     name: 'RDS',
     icon: `<svg style="width: 32px; height: 32px; display: block; position: relative; overflow: hidden; pointer-events: none;"><g style="pointer-events: none;"><g style="pointer-events: none;"></g><g style="pointer-events: none;"><g transform="translate(0.5,0.5)" style="visibility: visible; pointer-events: none;"><path d="M 15.77 28.42 L 8.73 28.42 L 3.8 26.09 L 0.98 23.22 L 0.98 10.09 L 3.8 7.22 L 8.73 4.9 L 15.77 4.9 L 20.7 7.22 L 23.52 10.1 L 23.52 23.22 L 20.7 26.09 Z" fill="#2e73b8" stroke="none" style="pointer-events: none;"></path><path d="M 3.8 26.09 L 3.8 7.22 L 8.73 4.9 L 8.73 28.42 Z" fill-opacity="0.3" fill="#000000" stroke="none" style="pointer-events: none;"></path><path d="M 0.98 23.22 L 0.98 10.09 L 3.8 7.22 L 3.8 26.09 Z" fill-opacity="0.5" fill="#000000" stroke="none" style="pointer-events: none;"></path><path d="M 15.77 28.42 L 15.77 4.9 L 20.7 7.22 L 20.7 26.09 Z" fill-opacity="0.3" fill="#ffffff" stroke="none" style="pointer-events: none;"></path></g><g transform="translate(0.5,0.5)" style="visibility: visible; pointer-events: none;"><rect x="0.98" y="1.47" width="29.4" height="8.82" rx="1.32" ry="1.32" fill="none" stroke="white" visibility="hidden" stroke-width="19" style="pointer-events: none;"></rect><rect x="0.98" y="1.47" width="29.4" height="8.82" rx="1.32" ry="1.32" fill="none" stroke="none" style="pointer-events: none;"></rect></g></g><g style="pointer-events: none;"></g><g style="pointer-events: none;"></g></g></svg>`
-  }
-];
-
-const azureServices: CloudService[] = [
+  },
   {
     name: 'NSG',
     icon: `<svg style="width: 32px; height: 32px; display: block; position: relative; overflow: hidden; pointer-events: none;"><g style="pointer-events: none;"><g style="pointer-events: none;"></g><g style="pointer-events: none;"><g style="visibility: visible; pointer-events: none;"><image x="3.69" y="4.1" width="19.27" height="24.6" xlink:href="https://app-test.cloudshot.io/img/lib/mscae/Network_Security_Groups_Classic.svg" style="pointer-events: none;"></image></g><g transform="translate(0.5,0.5)" style="visibility: visible; pointer-events: none;"><rect x="3.69" y="1.23" width="24.6" height="7.38" rx="1.11" ry="1.11" fill="none" stroke="white" visibility="hidden" stroke-width="19" style="pointer-events: none;"></rect><rect x="3.69" y="1.23" width="24.6" height="7.38" rx="1.11" ry="1.11" fill="none" stroke="none" style="pointer-events: none;"></rect></g></g><g style="pointer-events: none;"></g><g style="pointer-events: none;"></g></g></svg>`
@@ -86,6 +83,13 @@ const azureServices: CloudService[] = [
   },
 ];
 
+const shuffleArray = (array: CloudService[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 interface CloudBadgeProps {
   icon: string;
@@ -93,26 +97,26 @@ interface CloudBadgeProps {
 }
 
 const CloudBadge: React.FC<CloudBadgeProps> = ({ icon, name }) => (
-  <Badge className="bg-white space-x-1 shadow-[0px_0px_3px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] text-xs hover:bg-gray-100 hover:text-black rounded-md text-black flex items-center px-2 py-1 pb-[5px]">
+  <Badge className="bg-white space-x-1 shadow-[0px_0px_3px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] text-xs hover:bg-gray-100 hover:text-black rounded-md text-black flex items-center px-2 py-1 pb-[2px]">
     <span dangerouslySetInnerHTML={{ __html: icon }} />
     <span>{name}</span>
   </Badge>
 );
 
 const BadgeSlider = () => {
-  return (
-    <div className="space-y-4 mt-12">
-      <Marquee pauseOnHover className="max-w-7xl overflow-hidden" style={{ '--duration': `${25}s` }}>
-        {awsServices.map((service, serviceIndex) => (
-          <CloudBadge key={`${serviceIndex}`} icon={service.icon} name={service.name} />
-        ))}
-      </Marquee>
 
-      <Marquee pauseOnHover className="max-w-7xl overflow-hidden" style={{ '--duration': `${45}s` }}>
-        {azureServices.map((service, serviceIndex) => (
-          <CloudBadge key={`${serviceIndex}`} icon={service.icon} name={service.name} />
-        ))}
-      </Marquee>
+  const shuffledServices = React.useMemo(() => shuffleArray([...awsServices]), []);
+  const groupSize = Math.ceil(shuffledServices.length / 3);
+
+  return (
+    <div className="space-y-2 mt-12">
+      {[0, 1, 2].map((index) => (
+        <Marquee key={index} pauseOnHover className="max-w-7xl overflow-hidden" style={{ '--duration': `${25}s` }}>
+          {shuffledServices.slice(index * groupSize, (index + 1) * groupSize).map((service, serviceIndex) => (
+            <CloudBadge key={`${index}-${serviceIndex}`} {...service} />
+          ))}
+        </Marquee>
+      ))}
     </div>
   );
 };

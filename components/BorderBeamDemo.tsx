@@ -9,12 +9,12 @@ interface BorderBeamImageProps {
     height?: number;
 }
 
-export function BorderBeamImage({ src, alt, width = 100, height = 100 }: BorderBeamImageProps) {
+export function BorderBeamImage({ src, alt, width = 75, height = 75 }: BorderBeamImageProps) {
     return (
-        <div className="relative flex flex-col items-center min-w-[200px] min-h-[200px] justify-center overflow-hidden rounded-lg border bg-background p-4">
+        <div className="relative flex flex-col items-center min-w-[150px] min-h-[150px] justify-center overflow-hidden rounded-lg border bg-background p-4">
             <div className="relative">
                 <Image
-                    width={width}
+                    width={(src.includes("segment") || src.includes("algolia")) ? 120 : width}
                     height={height}
                     className='rounded-lg overflow-hidden'
                     src={src}

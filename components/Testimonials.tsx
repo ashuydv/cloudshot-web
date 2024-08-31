@@ -1,64 +1,71 @@
-import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
+import ReviewCard from "./ReviewCard";
 
 const reviews = [
     {
-        name: "Jack",
-        username: "@jack",
-        body: "I've never seen anything like this before. It's amazing. I love it.",
-        img: "https://avatar.vercel.sh/jack",
+        name: "Sarah Chen",
+        username: "@sarahchen_cto",
+        body: "Cloudshot has been a game-changer for our DevOps team. The real-time monitoring and predictive analytics have helped us prevent several potential outages. It's like having a crystal ball for our cloud infrastructure!",
+        img: "https://avatar.vercel.sh/sarahchen",
     },
     {
-        name: "Jill",
-        username: "@jill",
-        body: "I don't know what to say. I'm speechless. This is amazing.",
-        img: "https://avatar.vercel.sh/jill",
+        name: "Mike Johnson",
+        username: "@mikej_cloudarch",
+        body: "I've used many cloud management tools, but Cloudshot stands out with its intuitive interface and powerful analytics. It's saved us countless hours in troubleshooting and optimization.",
+        img: "https://avatar.vercel.sh/mikejohnson",
     },
     {
-        name: "John",
-        username: "@john",
-        body: "I'm at a loss for words. This is amazing. I love it.",
-        img: "https://avatar.vercel.sh/john",
+        name: "Emily Rodriguez",
+        username: "@emily_startup",
+        body: "As a small startup, we needed a cost-effective solution to manage our growing cloud infrastructure. Cloudshot not only fit our budget but also grew with us, providing insights that helped us scale efficiently.",
+        img: "https://avatar.vercel.sh/emilyrodriguez",
+    },
+    {
+        name: "David Thompson",
+        username: "@david_healthtech",
+        body: "In the healthcare industry, uptime is critical. Cloudshot's proactive alerts and detailed performance metrics have been invaluable in maintaining our 99.99% uptime SLA.",
+        img: "https://avatar.vercel.sh/davidthompson",
+    },
+    {
+        name: "Lisa Patel",
+        username: "@lisa_devops",
+        body: "The drag-and-drop management in Cloudshot is a dream come true. It's made our complex multi-cloud environment so much easier to visualize and control.",
+        img: "https://avatar.vercel.sh/lisapatel",
+    },
+    {
+        name: "Alex Kowalski",
+        username: "@alex_securitypro",
+        body: "I'm impressed with Cloudshot's security features. The ability to monitor and analyze our cloud resources for potential vulnerabilities has significantly enhanced our security posture.",
+        img: "https://avatar.vercel.sh/alexkowalski",
+    },
+    {
+        name: "Samantha Lee",
+        username: "@sam_cfo",
+        body: "Cloudshot's cost optimization recommendations have been eye-opening. We've reduced our cloud spend by 30% without sacrificing performance. It's a CFO's dream tool!",
+        img: "https://avatar.vercel.sh/samanthalee",
+    },
+    {
+        name: "Robert Martinez",
+        username: "@robert_sysadmin",
+        body: "The predictive modeling in Cloudshot is spot-on. It's helped us plan our capacity more accurately, avoiding overprovisioning and saving us a ton of money.",
+        img: "https://avatar.vercel.sh/robertmartinez",
+    },
+    {
+        name: "Jennifer Wong",
+        username: "@jennifer_ai",
+        body: "As someone working with large datasets and ML models, Cloudshot's resource utilization tracking has been crucial. It helps us optimize our compute resources for maximum efficiency.",
+        img: "https://avatar.vercel.sh/jenniferwong",
+    },
+    {
+        name: "Tom Baker",
+        username: "@tom_retail_cio",
+        body: "Cloudshot's ability to provide a unified view of our multi-cloud environment has been a lifesaver. It's dramatically simplified our cloud governance and compliance efforts.",
+        img: "https://avatar.vercel.sh/tombaker",
     },
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-    img,
-    name,
-    username,
-    body,
-}: {
-    img: string;
-    name: string;
-    username: string;
-    body: string;
-}) => {
-    return (
-        <figure
-            className={cn(
-                "relative h-40 w-auto cursor-pointer overflow-hidden rounded-xl border p-4",
-                // light styles
-                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-                // dark styles
-                "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-            )}
-        >
-            <div className="flex flex-row items-center gap-2">
-                <img className="rounded-full" width="32" height="32" alt="" src={img} />
-                <div className="flex flex-col">
-                    <figcaption className="text-sm font-medium dark:text-white">
-                        {name}
-                    </figcaption>
-                    <p className="text-xs font-medium dark:text-white/40">{username}</p>
-                </div>
-            </div>
-            <blockquote className="mt-2 text-sm">{body}</blockquote>
-        </figure>
-    );
-};
 
 export function MarqueeDemoVertical() {
     return (
@@ -67,19 +74,17 @@ export function MarqueeDemoVertical() {
                 <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
                     Packed with thousands of features
                 </h4>
-
-                <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-                    From Image generation to video generation, Everything AI has APIs for
-                    literally everything. It can even create this website copy for you.
+                <p className="text-sm lg:text-base  max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                    From startups to enterprises, hear how Cloudshot is revolutionizing cloud management. Our users are preventing outages, slashing costs, and simplifying complex infrastructures - all while boosting efficiency and security.
                 </p>
             </div>
-            <div className="relative flex h-[600px] py-12 w-full flex-row items-center justify-center overflow-hidden bg-background">
-                <Marquee pauseOnHover vertical className="[--duration:20s]">
-                    {firstRow.map((review) => (
-                        <ReviewCard key={review.username} {...review} />
+            <div className="relative flex h-[600px] py-32 w-full flex-row items-center justify-center overflow-hidden bg-background">
+                <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                    {firstRow.map((review, index) => (
+                        <ReviewCard key={review.username} {...review} priority={index === 0} />
                     ))}
                 </Marquee>
-                <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                <Marquee pauseOnHover vertical className="[--duration:20s]">
                     {secondRow.map((review) => (
                         <ReviewCard key={review.username} {...review} />
                     ))}

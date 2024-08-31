@@ -8,9 +8,12 @@ type Client = {
 
 const Clients: React.FC = () => {
     const clients: Client[] = [
-        { src: "/gcp.svg", alt: "Google Cloud Platform" },
         { src: "/aws.svg", alt: "Amazon Web Services" },
         { src: "/azure.svg", alt: "Microsoft Azure" },
+        { src: "/gcp.svg", alt: "Google Cloud Platform" },
+        { src: "/datadog.svg", alt: "Datadog" },
+        { src: "/segment.svg", alt: "Twilio Segment" },
+        { src: "/algolia.svg", alt: "Algolia" }
     ];
 
     return (
@@ -28,8 +31,6 @@ const Clients: React.FC = () => {
                             <BorderBeamImage
                                 src={client.src}
                                 alt={client.alt}
-                                width={100}
-                                height={100}
                             />
                         </div>
                     ))}
