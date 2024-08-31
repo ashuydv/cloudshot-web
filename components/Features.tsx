@@ -1,9 +1,12 @@
+"use client"
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import FeatureCard from "./FeatureCard";
 import { SkeletonFour } from "./SkeletonFour";
 import { SkeletonTwo } from "./SkeletonTwo";
 import { SkeletonOne } from "./Skeleton";
+import { motion } from "framer-motion";
 
 export function Features() {
     const features = [
@@ -41,14 +44,38 @@ export function Features() {
     return (
         <div className="relative z-20 py-10 lg:py-40 container mx-auto">
             <div className="px-8">
-                <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+                <motion.h4
+                    initial={{
+                        opacity: 0,
+                        y: 50,
+                        rotate: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{ duration: 0.6 }}
+                    className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white"
+                >
                     Packed with thousands of features
-                </h4>
+                </motion.h4>
 
-                <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                <motion.p
+                    initial={{
+                        opacity: 0,
+                        y: 50,
+                        rotate: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{ duration: 0.6 }}
+                    className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300"
+                >
                     From Image generation to video generation, Everything AI has APIs for
                     literally everything. It can even create this website copy for you.
-                </p>
+                </motion.p>
             </div>
 
             <div className="relative ">

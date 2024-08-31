@@ -1,5 +1,6 @@
 import Marquee from "@/components/magicui/marquee";
 import ReviewCard from "./ReviewCard";
+import Transition from "./Transition";
 
 const reviews = [
     {
@@ -69,34 +70,36 @@ const secondRow = reviews.slice(reviews.length / 2);
 
 export function MarqueeDemoVertical() {
     return (
-        <section className="container px-5 py-24 mx-auto">
-            <div className="px-8">
-                <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-                    Packed with thousands of features
-                </h4>
-                <p className="text-sm lg:text-base  max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-                    From startups to enterprises, hear how Cloudshot is revolutionizing cloud management. Our users are preventing outages, slashing costs, and simplifying complex infrastructures - all while boosting efficiency and security.
-                </p>
-            </div>
-            <div className="relative flex h-[600px] py-32 w-full flex-row items-center justify-center overflow-hidden bg-background">
-                <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
-                    {firstRow.map((review, index) => (
-                        <ReviewCard key={review.username} {...review} priority={index === 0} />
-                    ))}
-                </Marquee>
-                <Marquee pauseOnHover vertical className="[--duration:20s]">
-                    {secondRow.map((review) => (
-                        <ReviewCard key={review.username} {...review} />
-                    ))}
-                </Marquee>
-                <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
-                    {secondRow.map((review) => (
-                        <ReviewCard key={review.username} {...review} />
-                    ))}
-                </Marquee>
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
-            </div>
-        </section>
+        <Transition>
+            <section className="container px-5 py-24 mx-auto">
+                <div className="px-8">
+                    <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+                        Packed with thousands of features
+                    </h4>
+                    <p className="text-sm lg:text-base  max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                        From startups to enterprises, hear how Cloudshot is revolutionizing cloud management. Our users are preventing outages, slashing costs, and simplifying complex infrastructures - all while boosting efficiency and security.
+                    </p>
+                </div>
+                <div className="relative flex h-[600px] py-32 w-full flex-row items-center justify-center overflow-hidden bg-background">
+                    <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                        {firstRow.map((review, index) => (
+                            <ReviewCard key={review.username} {...review} priority={index === 0} />
+                        ))}
+                    </Marquee>
+                    <Marquee pauseOnHover vertical className="[--duration:20s]">
+                        {secondRow.map((review) => (
+                            <ReviewCard key={review.username} {...review} />
+                        ))}
+                    </Marquee>
+                    <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                        {secondRow.map((review) => (
+                            <ReviewCard key={review.username} {...review} />
+                        ))}
+                    </Marquee>
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
+                </div>
+            </section>
+        </Transition>
     );
 }

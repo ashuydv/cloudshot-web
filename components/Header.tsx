@@ -19,13 +19,13 @@ const Header = (props: Props) => {
                 </Link>
                 <Link
                     href="/pricing"
-                    className="text-blacker:text-foreground text-base"
+                    className="text-blacker:text-foreground text-base leading-8"
                 >
                     Pricing
                 </Link>
                 <Link
                     href="/contact"
-                    className="text-blacker:text-foreground text-base"
+                    className="text-blacker:text-foreground text-base leading-8"
                 >
                     Contact
                 </Link>

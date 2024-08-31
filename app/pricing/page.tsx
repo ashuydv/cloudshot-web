@@ -1,13 +1,14 @@
 import Pricing from '@/components/Pricing'
+import Transition from '@/components/Transition'
 import React from 'react'
 
 type Props = {}
 
 const page = (props: Props) => {
     return (
-        <div>
+        <Transition>
             <Pricing />
-        </div>
+        </Transition>
     )
 }
 

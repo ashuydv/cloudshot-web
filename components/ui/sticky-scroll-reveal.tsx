@@ -82,9 +82,18 @@ export const StickyScroll = ({
           contentClassName
         )}
       >
-        <div className="p-4 border bg-neutral-200 rounded relative">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{ duration: 0.6 }}
+          className="p-4 border bg-neutral-200 rounded relative"
+        >
           {content[activeCard].content ?? null}
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
