@@ -3,8 +3,8 @@ import Image from "next/image";
 export const SkeletonOne = () => {
     return (
         <div className="relative flex py-8 gap-10 h-full">
-            <div className="w-full mx-auto group h-full">
-                <div className="flex flex-1 w-full h-80 flex-col space-y-2">
+            <div className="w-full group h-full">
+                <div className="flex flex-1 w-full md:h-80 lg:h-80 flex-col space-y-2">
                     {/* TODO */}
                     <Image
                         src="/pricing_graph.png"

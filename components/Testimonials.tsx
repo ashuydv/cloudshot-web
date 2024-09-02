@@ -71,7 +71,7 @@ const secondRow = reviews.slice(reviews.length / 2);
 export function MarqueeDemoVertical() {
     return (
         <Transition>
-            <section className="container px-5 py-24 mx-auto">
+            <section className="container px-5 py-12 md:py-24 lg:py-24 mx-auto">
                 <div className="px-8">
                     <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
                         More Features Than Your Favorite DevOps Tool
@@ -81,17 +81,22 @@ export function MarqueeDemoVertical() {
                     </p>
                 </div>
                 <div className="relative flex h-[600px] py-32 w-full flex-row items-center justify-center overflow-hidden bg-background">
-                    <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                    <Marquee pauseOnHover vertical className="[--duration:40s] md:hidden">
+                        {reviews.map((review, index) => (
+                            <ReviewCard key={review.username} {...review} priority={index === 0} />
+                        ))}
+                    </Marquee>
+                    <Marquee reverse pauseOnHover vertical className="[--duration:20s] hidden md:flex">
                         {firstRow.map((review, index) => (
                             <ReviewCard key={review.username} {...review} priority={index === 0} />
                         ))}
                     </Marquee>
-                    <Marquee pauseOnHover vertical className="[--duration:20s]">
+                    <Marquee pauseOnHover vertical className="[--duration:20s] hidden md:flex">
                         {secondRow.map((review) => (
                             <ReviewCard key={review.username} {...review} />
                         ))}
                     </Marquee>
-                    <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+                    <Marquee reverse pauseOnHover vertical className="[--duration:20s] hidden md:flex">
                         {secondRow.map((review) => (
                             <ReviewCard key={review.username} {...review} />
                         ))}

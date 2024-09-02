@@ -66,7 +66,7 @@ export function FeaturesSectionDemo() {
         },
     ];
     return (
-        <div>
+        <div className="py-20">
             <div className="flex flex-col text-center w-full mb-10">
                 <motion.h1
                     initial={{
@@ -79,7 +79,7 @@ export function FeaturesSectionDemo() {
                         y: 0,
                     }}
                     transition={{ duration: 0.6 }}
-                    className="sm:text-5xl text-4xl font-medium title-font mb-4">
+                    className="text-3xl lg:text-5xl font-medium title-font mb-4">
                     Backed by the Best (and Most Sleep-Deprived) Engineers
                 </motion.h1>
                 <motion.p
@@ -121,7 +121,7 @@ const Feature2 = ({
         <Transition>
             <div
                 className={cn(
-                    "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+                    "flex flex-col px-4 md:px-0 lg:px-0 lg:border-r py-10 relative group/feature dark:border-neutral-800",
                     (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
                     index < 4 && "lg:border-b dark:border-neutral-800"
                 )}

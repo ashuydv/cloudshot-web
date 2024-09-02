@@ -47,7 +47,7 @@ export const SkeletonThree = () => {
                             alt={image.split('.svg')[0]}
                             width="700"
                             height="500"
-                            className="rounded-lg h-20 w-20 md:h-60 md:w-60 object-cover flex-shrink-0"
+                            className="rounded-lg h-32 w-32 md:h-60 md:w-60 object-cover flex-shrink-0"
                         />
                     </motion.div>
                 ))}

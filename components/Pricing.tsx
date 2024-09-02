@@ -1,5 +1,7 @@
 import React from 'react';
 import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 type PricingTier = {
     name: string;
@@ -12,7 +14,7 @@ type PricingTier = {
 const pricingTiers: PricingTier[] = [
     {
         name: 'Professional',
-        price: '$99/mo',
+        price: '',
         features: [
             'Forward Engineering',
             'Cost Comparator',
@@ -86,25 +88,27 @@ const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
             </ul>
         </div>
         <div>
-            <button
-                className={`${tier.highlighted
-                    ? 'bg-white text-black hover:bg-white/90'
-                    : 'bg-neutral-900 text-white hover:bg-black/90'
-                    } relative z-10 border border-transparent md:text-sm transition duration-200 items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40_inset,_0px_1px_0px_0px_#FFFFFF40_inset] mt-8 rounded-full py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 block w-full`}
-                aria-describedby={`tier-${tier.name.toLowerCase()}`}
-            >
-                {tier.buttonText}
-            </button>
+            <Link href='https://appsumo.com/products/cloudshot?utm_source=partner-link&utm_medium=referral&utm_campaign=partner-217895' target='_blank'>
+                <Button
+                    className={`${tier.highlighted
+                        ? 'bg-white text-black hover:bg-white/90'
+                        : 'bg-neutral-900 text-white hover:bg-black/90'
+                        } relative z-10 border border-transparent md:text-sm transition duration-200 items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40_inset,_0px_1px_0px_0px_#FFFFFF40_inset] mt-8 rounded-full py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 block w-full`}
+                    aria-describedby={`tier-${tier.name.toLowerCase()}`}
+                >
+                    {tier.buttonText}
+                </Button>
+            </Link>
         </div>
     </div>
 );
 
 const Pricing: React.FC = () => {
     return (
-        <div className="relative overflow-hidden py-20 md:py-0">
+        <div className="relative overflow-hidden py-4 md:py-0">
             <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-between pb-20">
                 <div className="relative">
-                    <div className="mx-auto mt-4 md:mt-20 flex relative z-20 gap-12 justify-center md:grid-cols-2 xl:grid-cols-4">
+                    <div className="mt-8 sm:mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
                         {pricingTiers.map((tier) => (
                             <PricingCard key={tier.name} tier={tier} />
                         ))}

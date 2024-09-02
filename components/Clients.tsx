@@ -23,7 +23,7 @@ const Clients: React.FC = () => {
     return (
         <section className="text-black body-font">
             <div className="container px-5 py-24 mx-auto">
-                <div className="flex flex-col text-center w-full mb-20">
+                <div className="flex flex-col text-center w-full mb-12 md:mb-20 lg:mb-20">
                     <motion.h1
                         initial={{
                             opacity: 0,
@@ -51,7 +51,7 @@ const Clients: React.FC = () => {
                         Every AI is the choice of all the fortune 500 companies.
                     </motion.p>
                 </div>
-                <div className="flex flex-wrap text-center justify-center gap-20">
+                <div className="flex flex-wrap text-center justify-center gap-6 md:gap-20 lg:gap-20">
                     {clients.map((client, index) => (
                         <motion.div
                             initial={{

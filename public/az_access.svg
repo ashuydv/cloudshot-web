@@ -1,0 +1,15 @@
+<svg
+    style="left: 1px; top: 1px; width: 32px; height: 30px; display: block; position: relative; overflow: hidden; pointer-events: none;">
+    <g style="pointer-events: none;">
+        <g style="pointer-events: none;"></g>
+        <g style="pointer-events: none;">
+            <g transform="translate(0.5,0.5)" style="visibility: visible; pointer-events: none;">
+                <path
+                    d="M 2.16 17.01 L 15.66 1.08 L 29.16 17.01 L 15.66 28.08 Z M 13.89 22.68 L 15.66 24.44 L 17.3 22.68 L 16.07 21.46 L 17.43 20.12 L 15.93 18.63 L 17.3 17.28 L 17.3 15.8 C 18.88 14.97 19.71 13.2 19.33 11.47 C 18.95 9.73 17.45 8.47 15.66 8.37 C 13.85 8.41 12.29 9.66 11.88 11.4 C 11.46 13.15 12.29 14.96 13.89 15.8 Z M 14.3 11.21 C 14.3 11.69 14.56 12.13 14.98 12.37 C 15.4 12.62 15.92 12.62 16.34 12.37 C 16.76 12.13 17.02 11.69 17.02 11.21 C 17.02 10.61 16.41 10.13 15.66 10.13 C 14.91 10.13 14.3 10.61 14.3 11.21"
+                    fill="#00bef2" stroke="none" style="pointer-events: none;"></path>
+            </g>
+        </g>
+        <g style="pointer-events: none;"></g>
+        <g style="pointer-events: none;"></g>
+    </g>
+</svg>

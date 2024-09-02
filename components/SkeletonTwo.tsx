@@ -7,11 +7,13 @@ import Image from "next/image";
 export const SkeletonTwo = () => {
     const images = [
         "/cognito.svg",
-        "/iam.svg",
-        "/idp.svg",
         "/azure_user.svg",
+        "/az_security_b.svg",
+        "/iam.svg",
+        "/az_sentinel.svg",
         "/azure_storage.svg",
         "/directory.svg",
+        "/idp.svg",
         "/detective.svg",
         "/certificate-manager.svg",
     ];
