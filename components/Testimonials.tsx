@@ -74,10 +74,10 @@ export function MarqueeDemoVertical() {
             <section className="container px-5 py-24 mx-auto">
                 <div className="px-8">
                     <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-                        Packed with thousands of features
+                        More Features Than Your Favorite DevOps Tool
                     </h4>
-                    <p className="text-sm lg:text-base  max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-                        From startups to enterprises, hear how Cloudshot is revolutionizing cloud management. Our users are preventing outages, slashing costs, and simplifying complex infrastructures - all while boosting efficiency and security.
+                    <p className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                        From startups to enterprises, hear how Cloudshot saves the day. Our users are avoiding outages, cutting costs, and taming cloud chaos—efficiency levels: over 9000.
                     </p>
                 </div>
                 <div className="relative flex h-[600px] py-32 w-full flex-row items-center justify-center overflow-hidden bg-background">

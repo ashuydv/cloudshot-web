@@ -1,27 +1,60 @@
-import { IconBrandYoutubeFilled } from "@tabler/icons-react";
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 export const SkeletonThree = () => {
+    const images = [
+        "/cloudwatch.png",
+        "/activity.png",
+        "/service-report.png",
+    ];
+
+    const imageVariants = {
+        whileHover: {
+            scale: 1.1,
+            rotate: 0,
+            zIndex: 100,
+        },
+        whileTap: {
+            scale: 1.1,
+            rotate: 0,
+            zIndex: 100,
+        },
+    };
+
+    const rotations = useMemo(() =>
+        Array(images.length * 2).fill(0).map(() => Math.floor(Math.random() * 20 - 10)),
+        [images.length]);
+
     return (
-        <Link
-            href="https://www.youtube.com/watch?v=RPa3_AD1_Vs"
-            target="__blank"
-            className="relative flex gap-10  h-full group/image"
-        >
-            <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
-                <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
-                    {/* TODO */}
-                    <IconBrandYoutubeFilled className="h-20 w-20 absolute z-10 inset-0 text-red-500 m-auto " />
-                    <Image
-                        src="https://assets.aceternity.com/fireship.jpg"
-                        alt="header"
-                        width={800}
-                        height={800}
-                        className="h-full w-full aspect-square object-cover object-center rounded-sm blur-none group-hover/image:blur-md transition-all duration-200"
-                    />
-                </div>
+        <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
+            <div className="flex flex-row -ml-20">
+                {images.map((image, idx) => (
+                    <motion.div
+                        variants={imageVariants}
+                        key={"images-first" + idx}
+                        style={{
+                            rotate: rotations[idx],
+                        }}
+                        whileHover="whileHover"
+                        whileTap="whileTap"
+                        className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+                    >
+                        <Image
+                            src={image}
+                            alt={image.split('.svg')[0]}
+                            width="700"
+                            height="500"
+                            className="rounded-lg h-20 w-20 md:h-60 md:w-60 object-cover flex-shrink-0"
+                        />
+                    </motion.div>
+                ))}
             </div>
-        </Link>
+
+            <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
+            <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" />
+        </div>
     );
 };

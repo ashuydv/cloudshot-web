@@ -7,36 +7,37 @@ import { SkeletonFour } from "./SkeletonFour";
 import { SkeletonTwo } from "./SkeletonTwo";
 import { SkeletonOne } from "./Skeleton";
 import { motion } from "framer-motion";
+import { SkeletonThree } from "./SkeletonThree";
 
 export function Features() {
     const features = [
         {
-            title: "Track issues effectively",
+            title: "Pricing Intelligence at Your Fingertips",
             description:
-                "Track and manage your project issues with ease using our intuitive interface.",
-            skeleton: <SkeletonOne />,
+                " Decode cloud costs in seconds! Our interactive graphs turn complex pricing into crystal-clear decisions. Click, compare, and optimize across AWS, Azure, and GCP – your bottom line will thank you.",
+            skeleton: < SkeletonOne />,
             className:
                 "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
         },
         {
-            title: "Capture pictures with AI",
+            title: "Seamless Access, Maximum Security",
             description:
-                "Capture stunning photos effortlessly using our advanced AI technology.",
+                "Your cloud, your rules. Connect via Cognito, IdP, access keys, or Azure AD – Cloudshot plays nice with them all. Enjoy Fort Knox security with Silicon Valley simplicity.",
             skeleton: <SkeletonTwo />,
             className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
         },
         {
-            title: "Watch our AI on YouTube",
+            title: " Insights That Drive Action",
             description:
-                "Whether its you or Tyler Durden, you can get to know about our product on YouTube",
-            skeleton: "",
+                "Turn data into your secret weapon. From activity logs to CloudWatch metrics, our reports arm you with laser-focused insights. Download, analyze, conquer – all in a few clicks.",
+            skeleton: <SkeletonThree />,
             className:
                 "col-span-1 lg:col-span-3 lg:border-r dark:border-neutral-800",
         },
         {
-            title: "Deploy in seconds",
+            title: "Control Your Cloud from a Single Canvas",
             description:
-                "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
+                "Your entire cloud empire, managed from one sleek dashboard. Deploy, monitor, scale – it's all drag, drop, and done. Complex operations, simplified. Cloud mastery, amplified.",
             skeleton: <SkeletonFour />,
             className: "col-span-1 lg:col-span-3 border-b lg:border-none",
         },

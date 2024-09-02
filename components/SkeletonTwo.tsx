@@ -11,6 +11,9 @@ export const SkeletonTwo = () => {
         "/idp.svg",
         "/azure_user.svg",
         "/azure_storage.svg",
+        "/directory.svg",
+        "/detective.svg",
+        "/certificate-manager.svg",
     ];
 
     const imageVariants = {
@@ -34,7 +37,7 @@ export const SkeletonTwo = () => {
         <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
             {/* TODO */}
             <div className="flex flex-row -ml-20">
-                {images.slice(0, 3).map((image, idx) => (
+                {images.map((image, idx) => (
                     <motion.div
                         variants={imageVariants}
                         key={"images-first" + idx}
@@ -47,7 +50,7 @@ export const SkeletonTwo = () => {
                     >
                         <Image
                             src={image}
-                            alt="bali images"
+                            alt={image.split('.svg')[0]}
                             width="500"
                             height="500"
                             className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
@@ -56,7 +59,7 @@ export const SkeletonTwo = () => {
                 ))}
             </div>
             <div className="flex flex-row">
-                {images.slice(3, 5).map((image, idx) => (
+                {images.splice(2, 6).map((image, idx) => (
                     <motion.div
                         key={"images-second" + idx}
                         style={{
@@ -69,7 +72,7 @@ export const SkeletonTwo = () => {
                     >
                         <Image
                             src={image}
-                            alt="bali images"
+                            alt={image.split('.svg')[0]}
                             width="500"
                             height="500"
                             className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"

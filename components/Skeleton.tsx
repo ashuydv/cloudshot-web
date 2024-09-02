@@ -7,17 +7,17 @@ export const SkeletonOne = () => {
                 <div className="flex flex-1 w-full h-80 flex-col space-y-2">
                     {/* TODO */}
                     <Image
-                        src="https://ai-saas-template-aceternity.vercel.app/_next/image?url=%2Ftyler.jpeg&w=828&q=75"
-                        alt="header"
-                        width={250}
-                        height={150}
-                        className="w-full object-center rounded-sm"
+                        src="/pricing_graph.png"
+                        alt="pricing graph"
+                        width={1000}
+                        height={1000}
+                        className="w-full object-center rounded-md shadow-[0px_0px_3px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]"
                     />
                 </div>
             </div>
 
-            <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-            <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
+            <div className="absolute bottom-0 z-40 inset-x-0 h-20 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
+            <div className="absolute top-0 z-40 inset-x-0 h-20 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
         </div>
     );
 };

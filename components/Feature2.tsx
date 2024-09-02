@@ -17,48 +17,51 @@ import Transition from "./Transition";
 export function FeaturesSectionDemo() {
     const features = [
         {
-            title: "Built for developers",
+            title: "Built for DevOps Engineers",
             description:
-                "Built for engineers, developers, dreamers, thinkers and doers.",
+                "Made for those who automate and fix what others can't.",
             icon: <IconTerminal2 />,
         },
         {
-            title: "Ease of use",
+            title: "Ease of Use",
             description:
-                "It's as easy as using an Apple, and as expensive as buying one.",
+                "Smoother than a zero-downtime deployment. It's that simple.",
             icon: <IconEaseInOut />,
         },
         {
-            title: "Pricing like no other",
+            title: "Pricing Like No Other",
             description:
-                "Our prices are best in the market. No cap, no lock, no credit card required.",
+                "Our pricing is so good, even your budget meetings will be shorter.",
             icon: <IconCurrencyDollar />,
         },
         {
-            title: "100% Uptime guarantee",
-            description: "We just cannot be taken down by anyone.",
+            title: "100% Uptime Guarantee",
+            description:
+                "We promise uptime so reliable, you'll forget what an alert looks like.",
             icon: <IconCloud />,
         },
         {
-            title: "Multi-tenant Architecture",
-            description: "You can simply share passwords instead of buying new seats",
+            title: "Multi-Tenant Architecture",
+            description:
+                "Easily switch between AWS, Azure, and GCP without breaking a sweat.",
             icon: <IconRouteAltLeft />,
         },
         {
             title: "24/7 Customer Support",
             description:
-                "We are available a 100% of the time. Atleast our AI Agents are.",
+                "Whether it's day or night, we're here—ready to help and save the day.",
             icon: <IconHelp />,
         },
         {
-            title: "Money back guarantee",
+            title: "Money Back Guarantee",
             description:
-                "If you donot like EveryAI, we will convince you to like us.",
+                "Not satisfied? We’ll fix it or send you a bunch of Kubernetes memes.",
             icon: <IconAdjustmentsBolt />,
         },
         {
-            title: "And everything else",
-            description: "I just ran out of copy ideas. Accept my sincere apologies",
+            title: "And Everything Else",
+            description:
+                "Because every great tool deserves a little bit of humor and heart.",
             icon: <IconHeart />,
         },
     ];
@@ -76,7 +79,9 @@ export function FeaturesSectionDemo() {
                         y: 0,
                     }}
                     transition={{ duration: 0.6 }}
-                    className="sm:text-5xl text-4xl font-medium title-font mb-4">Backed by the best companies</motion.h1>
+                    className="sm:text-5xl text-4xl font-medium title-font mb-4">
+                    Backed by the Best (and Most Sleep-Deprived) Engineers
+                </motion.h1>
                 <motion.p
                     initial={{
                         opacity: 0,
@@ -89,7 +94,7 @@ export function FeaturesSectionDemo() {
                     }}
                     transition={{ duration: 0.6 }}
                     className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                    Every AI is the choice of all the fortune 500 companies.
+                    Cloudshot: Trusted by Fortune 500 companies and the DevOps engineers who keep them running.
                 </motion.p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
@@ -116,7 +121,7 @@ const Feature2 = ({
         <Transition>
             <div
                 className={cn(
-                    "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
+                    "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
                     (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
                     index < 4 && "lg:border-b dark:border-neutral-800"
                 )}

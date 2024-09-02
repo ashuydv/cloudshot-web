@@ -22,7 +22,7 @@ export function BorderBeamImage({ src, alt, width = 75, height = 75 }: BorderBea
                 />
                 <div className="absolute inset-0 rounded-lg border-2 border-white/10"></div>
             </div>
-            <BorderBeam size={Math.max(width, height) + 32} duration={12} delay={9} />
+            <BorderBeam size={Math.max(width, height) + 32} duration={5} delay={1} />
         </div>
     );
 }

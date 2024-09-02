@@ -1,8 +1,10 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm, Controller } from "react-hook-form";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -14,12 +16,11 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "./ui/textarea"
+import { Textarea } from "@/components/ui/textarea"
 import { toast } from 'sonner';
-import { useForm } from 'react-hook-form';
 
 const FormSchema = z.object({
-    username: z.string().min(2, {
+    name: z.string().min(2, {
         message: "Username must be at least 2 characters.",
     }),
     email: z.string().email({
@@ -28,26 +29,59 @@ const FormSchema = z.object({
     subject: z.string().min(5, {
         message: "Subject must be at least 5 characters.",
     }),
-    message: z.string().min(2, {
+    _message: z.string().min(2, {
         message: "Message must be at least 2 characters.",
-    })
+    }),
+    recaptcha: z.string().min(1, {
+        message: "Please complete the reCAPTCHA.",
+    }),
 })
 
+type FormValues = z.infer<typeof FormSchema>;
+
 export function ContactForm() {
-    const form = useForm<z.infer<typeof FormSchema>>({
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const form = useForm<FormValues>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            username: "",
+            name: "",
             email: "",
             subject: "",
-            message: "",
+            _message: "",
+            recaptcha: "",
         },
     })
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
-        console.log(data);
-        toast("Form Submitted Successfully")
-        form.reset();
+    async function onSubmit(data: FormValues) {
+        setIsSubmitting(true);
+
+        console.log("formdata", data);
+        try {
+            const response = await fetch('https://asia-south1-com-bereej.cloudfunctions.net/sendEmailClouder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            if (result.isSend) {
+                console.log(result);
+                toast(`${result.msg}`);
+            }
+            form.reset();
+        } catch (error) {
+            console.error('Error:', error);
+            toast("Error submitting form. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -55,7 +89,7 @@ export function ContactForm() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
                 <FormField
                     control={form.control}
-                    name="username"
+                    name="name"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Name</FormLabel>
@@ -94,7 +128,7 @@ export function ContactForm() {
                 />
                 <FormField
                     control={form.control}
-                    name="message"
+                    name="_message"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Message</FormLabel>
@@ -105,7 +139,24 @@ export function ContactForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Controller
+                    name="recaptcha"
+                    control={form.control}
+                    render={({ field: { onChange, name } }) => (
+                        <FormItem>
+                            <FormControl>
+                                <ReCAPTCHA
+                                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
+                                    onChange={(value: string | null) => onChange(value)}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                </Button>
             </form>
         </Form>
     )
