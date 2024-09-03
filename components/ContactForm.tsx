@@ -74,8 +74,10 @@ export function ContactForm() {
             if (result.isSend) {
                 console.log(result);
                 toast(`${result.msg}`);
+                form.reset();
+            } else if (result.error === 'Invalid reCAPTCHA') {
+                toast("reCAPTCHA verification failed. Please try again.");
             }
-            form.reset();
         } catch (error) {
             console.error('Error:', error);
             toast("Error submitting form. Please try again.");
@@ -139,7 +141,7 @@ export function ContactForm() {
                         </FormItem>
                     )}
                 />
-                <Controller
+                <FormField
                     name="recaptcha"
                     control={form.control}
                     render={({ field: { onChange, name } }) => (

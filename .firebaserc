@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "com-bereej-cloudshot-test",
+    "prod": "com-bereej-cloudshot"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

@@ -58,7 +58,7 @@ export function Features() {
                     transition={{ duration: 0.6 }}
                     className="text-3xl lg:text-5xl lg:leading-tight max-w-[320px] md:max-w-5xl lg:max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white"
                 >
-                    Packed with thousands of features
+                    Powerful Cloud Management Suite
                 </motion.h4>
 
                 <motion.p
@@ -74,8 +74,7 @@ export function Features() {
                     transition={{ duration: 0.6 }}
                     className="text-sm lg:text-base max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300"
                 >
-                    From Image generation to video generation, Everything AI has APIs for
-                    literally everything. It can even create this website copy for you.
+                    From cost optimization to security management, Cloudshot offers comprehensive tools for your entire cloud infrastructure.
                 </motion.p>
             </div>
 

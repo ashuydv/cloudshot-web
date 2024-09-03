@@ -35,7 +35,7 @@ const Clients: React.FC = () => {
                             y: 0,
                         }}
                         transition={{ duration: 0.6 }}
-                        className="sm:text-5xl text-4xl font-medium title-font mb-4">Backed by the best companies</motion.h1>
+                        className="sm:text-5xl text-4xl font-medium title-font mb-4">Trusted by Cloud Leaders</motion.h1>
                     <motion.p
                         initial={{
                             opacity: 0,
@@ -48,7 +48,7 @@ const Clients: React.FC = () => {
                         }}
                         transition={{ duration: 0.6 }}
                         className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                        Every AI is the choice of all the fortune 500 companies.
+                        Cloudshot integrates seamlessly with the most powerful cloud platforms and tools in the industry.
                     </motion.p>
                 </div>
                 <div className="flex flex-wrap text-center justify-center gap-6 md:gap-20 lg:gap-20">

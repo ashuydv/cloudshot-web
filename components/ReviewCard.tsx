@@ -16,9 +16,9 @@ const ReviewCard = ({
     return (
         <figure
             className={cn(
-                "relative w-full md:w-[320px] cursor-pointer overflow-hidden rounded-xl border p-4",
-                "h-auto min-h-[160px] md:h-40", // Responsive height
-                "my-2 md:mx-4 md:my-6", // Add some margin for spacing
+                "relative w-full cursor-pointer overflow-hidden rounded-xl border p-4",
+                "h-auto min-h-[160px]", // Responsive height
+                "my-2 md:my-0", // Add some margin for spacing
                 // light styles
                 "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
                 // dark styles
